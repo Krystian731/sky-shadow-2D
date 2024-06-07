@@ -14,7 +14,7 @@ public class PlayerAnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // anim.SetBool("run", movement.IsMoving());
+        //anim.SetBool("run", movement.IsMoving());
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -25,14 +25,7 @@ public class PlayerAnimationController : MonoBehaviour
             anim.SetTrigger("attack2");
 
         }
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
-        {
-            anim.SetBool("run", true);
-        }
-        if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A))
-        {
-            anim.SetBool("run", false);
-        }
+            
 
 
 

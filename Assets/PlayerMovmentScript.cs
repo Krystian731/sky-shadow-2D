@@ -10,12 +10,20 @@ public class PlayerBehaviourScript : MonoBehaviour
     [SerializeField] private Rigidbody2D rigidbody;
     [SerializeField] private float jumpPower = 6f;
     [SerializeField] private GroundChecker groundChecker;
+    
+    public Animator anim;
 
     public Transform sprite;
 
     private bool isJumping = false;
 
-    private Vector3 input;
+    public Vector3 input;
+
+     void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -38,6 +46,8 @@ public class PlayerBehaviourScript : MonoBehaviour
         {
             sprite.localScale = new Vector3(0.1901725f, 0.1901725f, 0.1901725f);
         }
+
+        anim.SetBool("run", Mathf.Abs(input.x) > 0.1f);
     }
 
     private void FixedUpdate()
