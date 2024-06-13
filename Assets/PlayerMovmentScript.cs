@@ -18,6 +18,11 @@ public class PlayerBehaviourScript : MonoBehaviour
     private bool isJumping = false;
 
     public Vector3 input;
+    public float KBForce;
+    public float KBCounter;
+    public float KBSTotalTime;
+
+    public bool KnockFromRight;
 
      void Start()
     {
@@ -52,8 +57,25 @@ public class PlayerBehaviourScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 move = input * moveSpeed * Time.fixedDeltaTime;
-        rigidbody.velocity = new Vector2 (move.x, rigidbody.velocity.y);
+        if(KBCounter <= 0) 
+        {
+            Vector3 move = input * moveSpeed * Time.fixedDeltaTime;
+            rigidbody.velocity = new Vector2(move.x, rigidbody.velocity.y);
+        }
+        else 
+        {
+            if (KnockFromRight == true)
+            {
+                rigidbody.velocity = new Vector2(-KBForce, KBForce);
+            }
+            if (KnockFromRight == false) 
+            {
+                rigidbody.velocity = new Vector2(KBForce, KBForce); 
+            }
+            KBCounter -= Time.deltaTime;
+        }
+
+        
 
 
         if (isJumping) 

@@ -11,7 +11,9 @@ public class Patrol : MonoBehaviour
     public Animator anim;
     private Transform currentPoint;
     public float speed;
-    // Start is called before the first frame update
+    public Transform playerTransform;
+    public bool isChasing;
+    public float chaseDistance;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -25,27 +27,52 @@ public class Patrol : MonoBehaviour
     void Update()
     {
         Vector2 point = currentPoint.position - transform.position;
-        if(currentPoint == pointB.transform) 
+        if (isChasing) 
         {
-            rb.velocity = new Vector2(speed, 0);
-        }
-        else
-        {
-            rb.velocity = new Vector2(-speed, 0);
-        }
-
-        if (Vector2.Distance(transform.position, currentPoint.position) < 1f && currentPoint == pointA.transform)
-                               
-        {
-            flip();
-            currentPoint = pointB.transform;
+            if (transform.position.x > playerTransform.position.x)
+            {
+                flip();
+                transform.position += Vector3.left * speed * Time.deltaTime;
+            }
+            if (transform.position.x < playerTransform.position.x)
+            {
+                flip();
+                transform.position += Vector3.right * speed * Time.deltaTime;
+            }
         }
 
-        if (Vector2.Distance(transform.position, currentPoint.position) < 1f && currentPoint == pointB.transform) 
+        else 
         {
-            flip();
-            currentPoint = pointA.transform;
+            if(Vector2.Distance(transform.position, playerTransform.position) < chaseDistance) 
+            {
+                isChasing = true;
+            }
+
+            
+            if (currentPoint == pointB.transform)
+            {
+                rb.velocity = new Vector2(speed, 0);
+            }
+            else
+            {
+                rb.velocity = new Vector2(-speed, 0);
+            }
+
+            if (Vector2.Distance(transform.position, currentPoint.position) < 1f && currentPoint == pointA.transform)
+
+            {
+                flip();
+                currentPoint = pointB.transform;
+            }
+
+            if (Vector2.Distance(transform.position, currentPoint.position) < 1f && currentPoint == pointB.transform)
+            {
+                flip();
+                currentPoint = pointA.transform;
+            }
         }
+
+       
    
     }
 
