@@ -1,16 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Deat : MonoBehaviour
 {
-    public Vector3 spawnPoint;
+    //public GameObject Rogue_01;
+    public Transform spawnPoint;
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.transform.tag == "Player") 
+        if (other.gameObject.CompareTag("Player"))
         {
-            other.transform.position = spawnPoint;
+            Vector2 playerPosition = other.transform.position;
+            Vector2 enemyPosition = transform.position;
+
+            bool isHitFromAbove = playerPosition.y > enemyPosition.y + 0.5f;
+
+            
+            if (!isHitFromAbove)
+            {
+                Scene currentScene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(currentScene.name);
+            }
         }
     }
 }
