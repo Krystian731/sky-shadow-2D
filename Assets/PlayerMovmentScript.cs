@@ -12,6 +12,9 @@ public class PlayerBehaviourScript : MonoBehaviour
     [SerializeField] private GroundChecker groundChecker;
     
     public Animator anim;
+    public GameObject AttackPoint;
+    public float radius;
+    public LayerMask enemies;
 
     public Transform sprite;
 
@@ -54,6 +57,18 @@ public class PlayerBehaviourScript : MonoBehaviour
 
         anim.SetBool("run", Mathf.Abs(input.x) > 0.1f);
     }
+    public void attack() 
+    {
+        Collider2D[] enemy = Physics2D.OverlapCircleAll(AttackPoint.transform.position, radius, enemies);
+        foreach (Collider2D enemyGameobject  in enemy)
+        {
+            Debug.Log("HIT");
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(AttackPoint.transform.position, radius);
+    }
 
     private void FixedUpdate()
     {
@@ -84,4 +99,5 @@ public class PlayerBehaviourScript : MonoBehaviour
             isJumping= false;
         }
     }
+   
 }
