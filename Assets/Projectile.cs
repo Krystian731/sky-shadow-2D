@@ -12,12 +12,13 @@ public class Projecttile : MonoBehaviour
 
     public PlayerBehaviourScript playerMovement;
     public bool facingRight;
+    soundManager soundManager;
     void Start()
     {
         projectileCount = projectileLife;
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviourScript>();
         facingRight = playerMovement.sprite.localScale.x > 0;
-        
+        soundManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         
     }
 
@@ -45,6 +46,7 @@ public class Projecttile : MonoBehaviour
     {
         if(collision.gameObject.tag == "Weak Point")
         {
+            soundManager.PlaySFX(soundManager.deadEnemy);
             Destroy(collision.gameObject);
             
 

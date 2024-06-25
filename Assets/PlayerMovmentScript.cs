@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBehaviourScript : MonoBehaviour
 
@@ -26,10 +27,12 @@ public class PlayerBehaviourScript : MonoBehaviour
     public float KBSTotalTime;
 
     public bool KnockFromRight;
+    soundManager soundManager;
 
      void Start()
     {
         anim = GetComponent<Animator>();
+        soundManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
     }
 
 
@@ -43,8 +46,11 @@ public class PlayerBehaviourScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && groundChecker.IsGrounded())
         {
+            
             isJumping = true;
+            soundManager.PlaySFX(soundManager.jumpSound);
         }
+    
 
         if(input.x < 0f)
         {
@@ -97,6 +103,7 @@ public class PlayerBehaviourScript : MonoBehaviour
         {
             rigidbody.AddForce(new Vector2 (0, jumpPower), ForceMode2D.Impulse);
             isJumping= false;
+
         }
     }
    

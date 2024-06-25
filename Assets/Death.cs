@@ -9,6 +9,7 @@ public class Deat : MonoBehaviour
     public Transform spawnPoint;
     private Animator playerAnimator;
     public float deadTheAniamtionDelay = 0.1f;
+    soundManager soundManager;
 
     private void Start()
     {
@@ -17,6 +18,7 @@ public class Deat : MonoBehaviour
         {
             playerAnimator = player.GetComponent<Animator>();
         }
+        soundManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -33,7 +35,9 @@ public class Deat : MonoBehaviour
             {
                 if (playerAnimator != null)
                 {
+                    
                     playerAnimator.SetTrigger("Die");
+                    soundManager.PlaySFX(soundManager.deadPlayer);
                     Invoke("ResetScene", deadTheAniamtionDelay);
                 }
                 else 

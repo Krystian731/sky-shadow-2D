@@ -6,6 +6,12 @@ public class PlayerAnimationController : MonoBehaviour
 {
     //private PlayerMovmentScript movement;
     Animator anim;
+    soundManager soundManager;
+
+    private void Awake()
+    {
+        soundManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+    }
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -18,6 +24,7 @@ public class PlayerAnimationController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
+            soundManager.PlaySFX(soundManager.fire);
             anim.SetTrigger("attack");
         }
         if (Input.GetButtonDown("Fire2"))
