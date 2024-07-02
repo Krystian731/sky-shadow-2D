@@ -7,12 +7,14 @@ public class soundManager : MonoBehaviour
 {
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
+    [SerializeField] AudioSource gameOverAudioSource;
 
     public AudioClip backgroung;
     public AudioClip fire;
     public AudioClip jumpSound;
     public AudioClip deadPlayer;
     public AudioClip deadEnemy;
+    public AudioClip gameOver;
 
     private void Start()
     {
@@ -23,6 +25,10 @@ public class soundManager : MonoBehaviour
     public void PlaySFX(AudioClip clip) 
     {
         SFXSource.PlayOneShot(clip);
+    }
+    public void PlayGameOver(AudioClip clip) 
+    {
+        gameOverAudioSource.PlayOneShot(clip);
     }
 }
 

@@ -15864,7 +15864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
-  deadTheAniamtionDelay: 5
+  deadAnimationDelay: 1.1
 --- !u!114 &741731884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18611,7 +18611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
-  deadTheAniamtionDelay: 5
+  deadAnimationDelay: 1.1
 --- !u!114 &850928936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30231,7 +30231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
-  deadTheAniamtionDelay: 5
+  deadAnimationDelay: 1.1
 --- !u!114 &1408369425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34998,11 +34998,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1180800425}
   SFXSource: {fileID: 888475456}
+  gameOverAudioSource: {fileID: 0}
   backgroung: {fileID: 8300000, guid: b85e293f85723d64683a23d48250b560, type: 3}
   fire: {fileID: 8300000, guid: 5e1a9f876d3dafd47bc6b3dde25135fa, type: 3}
   jumpSound: {fileID: 8300000, guid: 4dd3709bc57e142658a6b53f15346ce6, type: 3}
   deadPlayer: {fileID: 8300000, guid: f03ca00748cc75c438092911536058b5, type: 3}
   deadEnemy: {fileID: 8300000, guid: effc0d496f2c4e144a91033290aefb66, type: 3}
+  gameOver: {fileID: 8300000, guid: 5b467a0e6b021b34d8fc0b7f97a5eb24, type: 3}
 --- !u!4 &1645988361
 Transform:
   m_ObjectHideFlags: 0
@@ -38950,7 +38952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
-  deadTheAniamtionDelay: 5
+  deadAnimationDelay: 1.1
 --- !u!114 &1818714779
 MonoBehaviour:
   m_ObjectHideFlags: 0

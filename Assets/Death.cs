@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Deat : MonoBehaviour
+public class Death : MonoBehaviour
 {
-    //public GameObject Rogue_01;
     public Transform spawnPoint;
     private Animator playerAnimator;
     private PlayerBehaviourScript playerBehaviourScript;
     private Rigidbody2D playerRigidbody2D;
-   // public float deadTheAniamtionDelay = 0.1f;
-    soundManager soundManager;
+    public float deadAnimationDelay = 1.0f;
+    private soundManager soundManager;
 
     private void Start()
     {
@@ -23,6 +22,9 @@ public class Deat : MonoBehaviour
             playerBehaviourScript = player.GetComponent<PlayerBehaviourScript>();
         }
         soundManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+        
+
+       
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -34,38 +36,54 @@ public class Deat : MonoBehaviour
 
             bool isHitFromAbove = playerPosition.y > enemyPosition.y + 0.5f;
 
-            
             if (!isHitFromAbove)
             {
                 if (playerAnimator != null)
                 {
-                    
                     playerAnimator.SetTrigger("Die");
                     soundManager.PlaySFX(soundManager.deadPlayer);
 
-                    if(playerRigidbody2D != null) 
+                    if (playerRigidbody2D != null)
                     {
                         playerRigidbody2D.velocity = Vector2.zero;
                         playerRigidbody2D.isKinematic = true;
                     }
 
-                    if (playerBehaviourScript != null) 
+                    if (playerBehaviourScript != null)
                     {
                         playerBehaviourScript.enabled = false;
                     }
 
-                    Invoke("ResetScene", 1.0f);
+                    // Debug log before playing game over sound
+                    Debug.Log("Preparing to play game over sound");
+                    Invoke("PlayGameOverSound", 0.2f);
+                    Invoke("ResetScene", deadAnimationDelay);
                 }
-                else 
+                else
                 {
                     ResetScene();
                 }
-                
             }
         }
     }
-    private void ResetScene() 
+
+    private void PlayGameOverSound()
     {
+        // Debug log to check if PlayGameOverSound is called
+        Debug.Log("Playing game over sound");
+        if (soundManager != null && soundManager.gameOver != null)
+        {
+            soundManager.PlaySFX(soundManager.gameOver);
+        }
+        else
+        {
+            Debug.LogError("gameOver sound clip not assigned or soundManager is null");
+        }
+    }
+
+    private void ResetScene()
+    {
+        
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }

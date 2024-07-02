@@ -8,7 +8,7 @@ public class PlayerBehaviourScript : MonoBehaviour
 
 {
     [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private Rigidbody2D rigidbody;
+    [SerializeField] public Rigidbody2D rigidbody;
     [SerializeField] private float jumpPower = 6f;
     [SerializeField] private GroundChecker groundChecker;
     
