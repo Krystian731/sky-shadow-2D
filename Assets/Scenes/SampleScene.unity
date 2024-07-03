@@ -27867,6 +27867,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6780471142599790750, guid: ccc0b603ebe83ab42884921c938cec25, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.648
+      objectReference: {fileID: 0}
     - target: {fileID: 6850742783917963173, guid: ccc0b603ebe83ab42884921c938cec25, type: 3}
       propertyPath: cam
       value: 
@@ -27887,6 +27891,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420028}
+    - target: {fileID: 7776244256449313541, guid: ccc0b603ebe83ab42884921c938cec25, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.865
+      objectReference: {fileID: 0}
     - target: {fileID: 7791371840223860211, guid: ccc0b603ebe83ab42884921c938cec25, type: 3}
       propertyPath: m_SortingOrder
       value: 4
@@ -36246,12 +36254,14 @@ MonoBehaviour:
   musicSource: {fileID: 1180800425}
   SFXSource: {fileID: 888475456}
   gameOverAudioSource: {fileID: 0}
+  winGameAudioSource: {fileID: 0}
   backgroung: {fileID: 8300000, guid: b85e293f85723d64683a23d48250b560, type: 3}
   fire: {fileID: 8300000, guid: 5e1a9f876d3dafd47bc6b3dde25135fa, type: 3}
   jumpSound: {fileID: 8300000, guid: 4dd3709bc57e142658a6b53f15346ce6, type: 3}
   deadPlayer: {fileID: 8300000, guid: f03ca00748cc75c438092911536058b5, type: 3}
   deadEnemy: {fileID: 8300000, guid: effc0d496f2c4e144a91033290aefb66, type: 3}
   gameOver: {fileID: 8300000, guid: 5b467a0e6b021b34d8fc0b7f97a5eb24, type: 3}
+  winGame: {fileID: 0}
 --- !u!4 &1645988361
 Transform:
   m_ObjectHideFlags: 0
@@ -46716,7 +46726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 238462471359976339, guid: 78bcfa9ad43046648936860f428b8447, type: 3}
       propertyPath: m_SortingOrder
-      value: 26
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 238931517789501577, guid: 78bcfa9ad43046648936860f428b8447, type: 3}
       propertyPath: m_SortingOrder
@@ -49760,7 +49770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4118788918172103525, guid: 78bcfa9ad43046648936860f428b8447, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 63.82064
+      value: 63.834
       objectReference: {fileID: 0}
     - target: {fileID: 4118788918172103525, guid: 78bcfa9ad43046648936860f428b8447, type: 3}
       propertyPath: m_LocalPosition.y
@@ -50704,7 +50714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5340577370539487157, guid: 78bcfa9ad43046648936860f428b8447, type: 3}
       propertyPath: m_SortingOrder
-      value: 25
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5341361088647411490, guid: 78bcfa9ad43046648936860f428b8447, type: 3}
       propertyPath: m_SortingOrder
