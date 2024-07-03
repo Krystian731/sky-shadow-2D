@@ -14,6 +14,8 @@ public class Death : MonoBehaviour
     public float deadAnimationDelay = 1.0f;
     private soundManager soundManager;
     public string startSceneName = "Main Menu";
+    public gameManagerScript gameManagerScript;
+    private bool isDead;
 
     private void Start()
     {
@@ -25,6 +27,7 @@ public class Death : MonoBehaviour
             playerBehaviourScript = player.GetComponent<PlayerBehaviourScript>();
             playerAnimationController = player.GetComponent <PlayerAnimationController>();
             projectileLunch = player.GetComponent<ProjectileLunch>();
+            
         }
         soundManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         
@@ -43,8 +46,10 @@ public class Death : MonoBehaviour
 
             if (!isHitFromAbove) // je¿eli nie 
             {
-                if (playerAnimator != null) // Sprawdza, czy animator gracza jest przypisany.
+                
+                if (playerAnimator != null && !isDead) // Sprawdza, czy animator gracza jest przypisany.
                 {
+                    isDead = true;
                     playerAnimator.SetTrigger("Die"); // Ustawia trigger animacji "Die" dla animatora gracza.
                     soundManager.PlaySFX(soundManager.deadPlayer); // Odtwarza dŸwiêk œmierci gracza
 
@@ -70,14 +75,14 @@ public class Death : MonoBehaviour
                     // Debug log before playing game over sound
                     Debug.Log("Preparing to play game over sound");
                     Debug.Log("Invoking PlayGameOverSound");
-                    Invoke("PlayGameOverSound", 0.2f);
+                    Invoke("GameOver", 1.2f);
                     Debug.Log("Invoking ResetScene");
-                    Invoke("ResetScene", deadAnimationDelay);
+                   // Invoke("ResetScene", deadAnimationDelay);
                 }
                 else
                 {
                     Debug.Log("Animator not found, resetting scene immediately.");
-                    ResetScene();
+                    gameManagerScript.gameOver();
                 }
             }
         }
@@ -101,5 +106,9 @@ public class Death : MonoBehaviour
     {
         Debug.Log("Resetting scene to: " + startSceneName);
         SceneManager.LoadSceneAsync("Main Menu");
+    }
+    private void GameOver() 
+    {
+        gameManagerScript.gameOver();
     }
 }
