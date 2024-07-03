@@ -8,6 +8,8 @@ public class Death : MonoBehaviour
     public Transform spawnPoint;
     private Animator playerAnimator;
     private PlayerBehaviourScript playerBehaviourScript;
+    private PlayerAnimationController playerAnimationController;
+    private ProjectileLunch projectileLunch;
     private Rigidbody2D playerRigidbody2D;
     public float deadAnimationDelay = 1.0f;
     private soundManager soundManager;
@@ -21,6 +23,8 @@ public class Death : MonoBehaviour
             playerAnimator = player.GetComponent<Animator>();
             playerRigidbody2D = player.GetComponent<Rigidbody2D>();
             playerBehaviourScript = player.GetComponent<PlayerBehaviourScript>();
+            playerAnimationController = player.GetComponent <PlayerAnimationController>();
+            projectileLunch = player.GetComponent<ProjectileLunch>();
         }
         soundManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         
@@ -53,6 +57,14 @@ public class Death : MonoBehaviour
                     if (playerBehaviourScript != null) // sprawdza, czy skrypt jest przypisany.
                     {
                         playerBehaviourScript.enabled = false; // wy³¹cza skrypt gracza.
+                    }
+                    if (playerAnimationController != null) 
+                    {
+                        playerAnimationController.enabled = false;
+                    }
+                    if (projectileLunch != null) 
+                    {
+                        projectileLunch.enabled = false;
                     }
 
                     // Debug log before playing game over sound
