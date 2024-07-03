@@ -8,9 +8,14 @@ public class Death : MonoBehaviour
     public Transform spawnPoint;
     private Animator playerAnimator;
     private PlayerBehaviourScript playerBehaviourScript;
+    private PlayerAnimationController playerAnimationController;
+    private ProjectileLunch projectileLunch;
     private Rigidbody2D playerRigidbody2D;
     public float deadAnimationDelay = 1.0f;
     private soundManager soundManager;
+    public string startSceneName = "Main Menu";
+    public gameManagerScript gameManagerScript;
+    private bool isDead;
 
     private void Start()
     {
@@ -20,6 +25,9 @@ public class Death : MonoBehaviour
             playerAnimator = player.GetComponent<Animator>();
             playerRigidbody2D = player.GetComponent<Rigidbody2D>();
             playerBehaviourScript = player.GetComponent<PlayerBehaviourScript>();
+            playerAnimationController = player.GetComponent <PlayerAnimationController>();
+            projectileLunch = player.GetComponent<ProjectileLunch>();
+            
         }
         soundManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
         
@@ -29,39 +37,52 @@ public class Death : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player")) // Je¿eli jakiœ obiekt ma tag "Player".
         {
-            Vector2 playerPosition = other.transform.position;
-            Vector2 enemyPosition = transform.position;
+            Vector2 playerPosition = other.transform.position; // przypisanie pozycji gracza
+            Vector2 enemyPosition = transform.position; // przypisanie pozycji przeciwnika
 
-            bool isHitFromAbove = playerPosition.y > enemyPosition.y + 0.5f;
+            bool isHitFromAbove = playerPosition.y > enemyPosition.y + 0.5f; // sprawdza czy gracz uderzy³ przeciwnika od góry.
 
-            if (!isHitFromAbove)
+            if (!isHitFromAbove) // je¿eli nie 
             {
-                if (playerAnimator != null)
+                
+                if (playerAnimator != null && !isDead) // Sprawdza, czy animator gracza jest przypisany.
                 {
-                    playerAnimator.SetTrigger("Die");
-                    soundManager.PlaySFX(soundManager.deadPlayer);
+                    isDead = true;
+                    playerAnimator.SetTrigger("Die"); // Ustawia trigger animacji "Die" dla animatora gracza.
+                    soundManager.PlaySFX(soundManager.deadPlayer); // Odtwarza dŸwiêk œmierci gracza
 
-                    if (playerRigidbody2D != null)
+                    if (playerRigidbody2D != null) // Sprawdza, czy Rigidbody gracza jest przypisany.
                     {
-                        playerRigidbody2D.velocity = Vector2.zero;
-                        playerRigidbody2D.isKinematic = true;
+                        playerRigidbody2D.velocity = Vector2.zero; // ustawia prêdkoœæ gracza na zero;
+                        playerRigidbody2D.isKinematic = true; // Ustawia Rigidbody gracza jako kinematyczny (wy³¹cza fizyke)
                     }
 
-                    if (playerBehaviourScript != null)
+                    if (playerBehaviourScript != null) // sprawdza, czy skrypt jest przypisany.
                     {
-                        playerBehaviourScript.enabled = false;
+                        playerBehaviourScript.enabled = false; // wy³¹cza skrypt gracza.
+                    }
+                    if (playerAnimationController != null) 
+                    {
+                        playerAnimationController.enabled = false;
+                    }
+                    if (projectileLunch != null) 
+                    {
+                        projectileLunch.enabled = false;
                     }
 
                     // Debug log before playing game over sound
                     Debug.Log("Preparing to play game over sound");
-                    Invoke("PlayGameOverSound", 0.2f);
-                    Invoke("ResetScene", deadAnimationDelay);
+                    Debug.Log("Invoking PlayGameOverSound");
+                    Invoke("GameOver", 1.2f);
+                    Debug.Log("Invoking ResetScene");
+                   // Invoke("ResetScene", deadAnimationDelay);
                 }
                 else
                 {
-                    ResetScene();
+                    Debug.Log("Animator not found, resetting scene immediately.");
+                    gameManagerScript.gameOver();
                 }
             }
         }
@@ -83,8 +104,11 @@ public class Death : MonoBehaviour
 
     private void ResetScene()
     {
-        
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        Debug.Log("Resetting scene to: " + startSceneName);
+        SceneManager.LoadSceneAsync("Main Menu");
+    }
+    private void GameOver() 
+    {
+        gameManagerScript.gameOver();
     }
 }

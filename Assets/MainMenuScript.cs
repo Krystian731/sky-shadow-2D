@@ -8,4 +8,8 @@ public class MainMenuScript : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(1);
     }
+    public void QuicGame() 
+    {
+        Application.Quit();
+    }
 }
