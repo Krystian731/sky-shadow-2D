@@ -29,29 +29,29 @@ public class Death : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player")) // Je¿eli jakiœ obiekt ma tag "Player".
         {
-            Vector2 playerPosition = other.transform.position;
-            Vector2 enemyPosition = transform.position;
+            Vector2 playerPosition = other.transform.position; // przypisanie pozycji gracza
+            Vector2 enemyPosition = transform.position; // przypisanie pozycji przeciwnika
 
-            bool isHitFromAbove = playerPosition.y > enemyPosition.y + 0.5f;
+            bool isHitFromAbove = playerPosition.y > enemyPosition.y + 0.5f; // sprawdza czy gracz uderzy³ przeciwnika od góry.
 
-            if (!isHitFromAbove)
+            if (!isHitFromAbove) // je¿eli nie 
             {
-                if (playerAnimator != null)
+                if (playerAnimator != null) // Sprawdza, czy animator gracza jest przypisany.
                 {
-                    playerAnimator.SetTrigger("Die");
-                    soundManager.PlaySFX(soundManager.deadPlayer);
+                    playerAnimator.SetTrigger("Die"); // Ustawia trigger animacji "Die" dla animatora gracza.
+                    soundManager.PlaySFX(soundManager.deadPlayer); // Odtwarza dŸwiêk œmierci gracza
 
-                    if (playerRigidbody2D != null)
+                    if (playerRigidbody2D != null) // Sprawdza, czy Rigidbody gracza jest przypisany.
                     {
-                        playerRigidbody2D.velocity = Vector2.zero;
-                        playerRigidbody2D.isKinematic = true;
+                        playerRigidbody2D.velocity = Vector2.zero; // ustawia prêdkoœæ gracza na zero;
+                        playerRigidbody2D.isKinematic = true; // Ustawia Rigidbody gracza jako kinematyczny (wy³¹cza fizyke)
                     }
 
-                    if (playerBehaviourScript != null)
+                    if (playerBehaviourScript != null) // sprawdza, czy skrypt jest przypisany.
                     {
-                        playerBehaviourScript.enabled = false;
+                        playerBehaviourScript.enabled = false; // wy³¹cza skrypt gracza.
                     }
 
                     // Debug log before playing game over sound
