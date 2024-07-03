@@ -11,6 +11,7 @@ public class Death : MonoBehaviour
     private Rigidbody2D playerRigidbody2D;
     public float deadAnimationDelay = 1.0f;
     private soundManager soundManager;
+    public string startSceneName = "Main Menu";
 
     private void Start()
     {
@@ -56,11 +57,14 @@ public class Death : MonoBehaviour
 
                     // Debug log before playing game over sound
                     Debug.Log("Preparing to play game over sound");
+                    Debug.Log("Invoking PlayGameOverSound");
                     Invoke("PlayGameOverSound", 0.2f);
+                    Debug.Log("Invoking ResetScene");
                     Invoke("ResetScene", deadAnimationDelay);
                 }
                 else
                 {
+                    Debug.Log("Animator not found, resetting scene immediately.");
                     ResetScene();
                 }
             }
@@ -83,8 +87,7 @@ public class Death : MonoBehaviour
 
     private void ResetScene()
     {
-        
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        Debug.Log("Resetting scene to: " + startSceneName);
+        SceneManager.LoadSceneAsync("Main Menu");
     }
 }

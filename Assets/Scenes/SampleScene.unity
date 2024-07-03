@@ -7789,6 +7789,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7988632182511595086, guid: 14ada0af1b8aff140b38ae7f13a21125, type: 3}
+      propertyPath: m_Size.x
+      value: 0.99726856
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988632182511595086, guid: 14ada0af1b8aff140b38ae7f13a21125, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0013657063
+      objectReference: {fileID: 0}
     - target: {fileID: 7998628190461703072, guid: 14ada0af1b8aff140b38ae7f13a21125, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.60922027
@@ -9660,7 +9668,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.11271298, y: 4.315423}
+  m_Offset: {x: -0.16353726, y: 4.315423}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -9671,7 +9679,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.503625, y: 7.576847}
+  m_Size: {x: 4.2110224, y: 7.576847}
   m_EdgeRadius: 0
 --- !u!114 &461347649
 MonoBehaviour:
@@ -15938,6 +15946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
   deadAnimationDelay: 1.1
+  startSceneName: Main Menu
 --- !u!114 &741731884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18685,6 +18694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
   deadAnimationDelay: 1.1
+  startSceneName: Main Menu
 --- !u!114 &850928936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30473,6 +30483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
   deadAnimationDelay: 1.1
+  startSceneName: Main Menu
 --- !u!114 &1408369425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39238,6 +39249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
   deadAnimationDelay: 1.1
+  startSceneName: Main Menu
 --- !u!114 &1818714779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43889,7 +43901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010141028922, guid: 722924ec8a0056f4a8fb443b2fb65ff9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.13
+      value: -2.067
       objectReference: {fileID: 0}
     - target: {fileID: 4000010141028922, guid: 722924ec8a0056f4a8fb443b2fb65ff9, type: 3}
       propertyPath: m_LocalPosition.y

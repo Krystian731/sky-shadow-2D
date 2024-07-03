@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TouchToWin : MonoBehaviour
 {
@@ -44,8 +45,8 @@ void Start ()
        
         public void ProcessWin(GameObject go)
         {
- 
-         Application.LoadLevel("TtileScreen");
+
+        SceneManager.LoadScene("TtileScreen");
         }
        
    
