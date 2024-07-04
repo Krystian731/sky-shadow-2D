@@ -11891,7 +11891,7 @@ MonoBehaviour:
   target: {fileID: 461347646}
   distance: -10
   height: 2
-  damping: 5
+  damping: 500
   mapX: 100
   mapY: 100
 --- !u!1 &522388876

@@ -34,19 +34,23 @@ public class Awesome2DCamera : MonoBehaviour {
         maxY = mapY;
     }
  
-    void Update () {
+    void LateUpdate () {
  
         // get the position of the target (AKA player)
         Vector3 wantedPosition = target.TransformPoint(0, height, distance);
  
         // check if it's inside the boundaries on the X position
+       // wantedPosition.x = Mathf.Clamp(wantedPosition.x, minX, maxX);
+
         wantedPosition.x = (wantedPosition.x < minX) ? minX : wantedPosition.x;
         wantedPosition.x = (wantedPosition.x > maxX) ? maxX : wantedPosition.x;
- 
+        
         // check if it's inside the boundaries on the Y position
+        //wantedPosition.y = Mathf.Clamp(wantedPosition.y, minY, maxY);
+
         wantedPosition.y = (wantedPosition.y < minY) ? minY : wantedPosition.y;
         wantedPosition.y = (wantedPosition.y > maxY) ? maxY : wantedPosition.y;
-
+       
         // set the camera to go to the wanted position in a certain amount of time
         transform.position = Vector3.Lerp (transform.position, wantedPosition, (Time.deltaTime * damping));
     }
