@@ -99,7 +99,7 @@ public class PlayerBehaviourScript : MonoBehaviour
         
 
 
-        if (isJumping) 
+        if (isJumping && groundChecker.IsGrounded()) 
         {
             rigidbody.AddForce(new Vector2 (0, jumpPower), ForceMode2D.Impulse);
             isJumping= false;

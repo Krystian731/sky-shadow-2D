@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class DeathSpikes : MonoBehaviour
 {
-    public Transform spawnPoint;
+    
     private Animator playerAnimator;
     private PlayerBehaviourScript playerBehaviourScript;
     private Rigidbody2D playerRigidbody2D;
     public float deadAnimationDelay = 1.0f;
     private soundManager soundManager;
+    private bool isDead;
+    public gameManagerScript gameManagerScript;
 
     private void Start()
     {
@@ -29,15 +31,16 @@ public class DeathSpikes : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !isDead)
         {
-            Vector2 playerPosition = other.transform.position;
-            Vector2 enemyPosition = transform.position;
+            isDead = true;
+            //Vector2 playerPosition = other.transform.position;
+            //Vector2 enemyPosition = transform.position;
 
-            bool isHitFromAbove = playerPosition.y > enemyPosition.y + 0.5f;
+            //bool isHitFromAbove = playerPosition.y > enemyPosition.y + 0.5f;
 
-            if (!isHitFromAbove)
-            {
+           
+            
                 if (playerAnimator != null)
                 {
                     playerAnimator.SetTrigger("Die");
@@ -57,13 +60,13 @@ public class DeathSpikes : MonoBehaviour
                     // Debug log before playing game over sound
                     Debug.Log("Preparing to play game over sound");
                     Invoke("PlayGameOverSound", 0.2f);
-                    Invoke("ResetScene", deadAnimationDelay);
+                    Invoke("GameOver", 1.2f);
                 }
                 else
                 {
-                    ResetScene();
+                //gameManagerScript.gameOver();
                 }
-            }
+            
         }
     }
 
@@ -81,10 +84,9 @@ public class DeathSpikes : MonoBehaviour
         }
     }
 
-    private void ResetScene()
+    private void GameOver()
     {
-        
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+
+        gameManagerScript.gameOver();
     }
 }
