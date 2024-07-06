@@ -9,6 +9,7 @@ public class soundManager : MonoBehaviour
     [SerializeField] AudioSource SFXSource;
     [SerializeField] AudioSource gameOverAudioSource;
     [SerializeField] AudioSource winGameAudioSource;
+    [SerializeField] AudioSource openChestAudioSource;
 
     public AudioClip backgroung;
     public AudioClip fire;
@@ -17,6 +18,7 @@ public class soundManager : MonoBehaviour
     public AudioClip deadEnemy;
     public AudioClip gameOver;
     public AudioClip winGame;
+    public AudioClip openChest;
 
     private void Start()
     {
@@ -35,6 +37,10 @@ public class soundManager : MonoBehaviour
     public void PlayWinGame(AudioClip clip)
     {
         winGameAudioSource.PlayOneShot(clip);
+    }
+    public void PlayOpenChest(AudioClip clip)
+    {
+        openChestAudioSource.PlayOneShot(clip);
     }
 }
 
