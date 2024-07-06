@@ -8,22 +8,15 @@ public class AnimOpen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        
         animator = GetComponent<Animator>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player")) 
         {
-            Vector2 playerPosition = collision.transform.position;
-            Vector2 boxPosition = transform.position;
-
-            bool isHit = playerPosition.y < boxPosition.y + 0.5f;
-            if (isHit) 
-            {
-                animator.SetBool("AnimBox", true);
-            }
+            animator.SetBool("IsOpened", false);
         }
     }
     // Update is called once per frame
