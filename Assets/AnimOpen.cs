@@ -21,12 +21,17 @@ public class AnimOpen : MonoBehaviour
         {
             animator.SetTrigger("open");
             soundManager.PlaySFX(soundManager.openChest);
-
+            Invoke("winScreen", 1.0f);
         }
     }
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void winScreen() 
+    {
+        gameManagerScript.winGame();
     }
 }
