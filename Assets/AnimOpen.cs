@@ -6,11 +6,13 @@ public class AnimOpen : MonoBehaviour
 {
     Animator animator;
     public gameManagerScript gameManagerScript;
+    private soundManager soundManager;
     // Start is called before the first frame update
     void Start()
     {
         
         animator = GetComponent<Animator>();
+        soundManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,6 +20,7 @@ public class AnimOpen : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")) 
         {
             animator.SetTrigger("open");
+            soundManager.PlaySFX(soundManager.openChest);
 
         }
     }
