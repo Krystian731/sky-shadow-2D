@@ -5,8 +5,13 @@ using UnityEngine;
 
 public class openChest : MonoBehaviour
 {
-private Animator anim;
+Animator anim;
+soundManager soundManager;
 
+private void Awake()
+    {
+        soundManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+    }
     void Start()
     {
      anim = GetComponent<Animator>();   
@@ -17,6 +22,7 @@ private Animator anim;
         if (box.gameObject.CompareTag("Player"))
         {
           anim.SetBool("IsOpened", true);
+          soundManager.PlaySFX(soundManager.openChest);
         }
     }
 

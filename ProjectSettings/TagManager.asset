@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - Weak Point
   - Audio
+  - Object
+  - IsOpened
+  - Chest
   layers:
   - Default
   - TransparentFX
