@@ -27,11 +27,7 @@ public class PlayerAnimationController : MonoBehaviour
             soundManager.PlaySFX(soundManager.fire);
             anim.SetTrigger("attack");
         }
-        if (Input.GetButtonDown("Fire2"))
-        {
-            anim.SetTrigger("attack2");
-
-        }
+     
             
 
 

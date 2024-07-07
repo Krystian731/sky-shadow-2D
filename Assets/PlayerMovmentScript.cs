@@ -8,7 +8,7 @@ public class PlayerBehaviourScript : MonoBehaviour
 
 {
     [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] public Rigidbody2D rigidbody;
+    [SerializeField] public new Rigidbody2D rigidbody;
     [SerializeField] private float jumpPower = 6f;
     [SerializeField] private GroundChecker groundChecker;
     
@@ -22,9 +22,9 @@ public class PlayerBehaviourScript : MonoBehaviour
     private bool isJumping = false;
 
     public Vector3 input;
-    public float KBForce;
-    public float KBCounter;
-    public float KBSTotalTime;
+    private float KBForce;
+    private float KBCounter;
+    private float KBSTotalTime;
 
     public bool KnockFromRight;
     soundManager soundManager;
