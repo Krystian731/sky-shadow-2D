@@ -20218,7 +20218,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5227416363578645971, guid: 29dd3832f242c8d43812461a9207f40c, type: 3}
       propertyPath: m_text
-      value: VICTORY
+      value: VICTORY!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227416363578645971, guid: 29dd3832f242c8d43812461a9207f40c, type: 3}
+      propertyPath: m_margin.w
+      value: 19.282549
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227416363578645971, guid: 29dd3832f242c8d43812461a9207f40c, type: 3}
+      propertyPath: m_margin.z
+      value: -9.805176
       objectReference: {fileID: 0}
     - target: {fileID: 5227416363578645971, guid: 29dd3832f242c8d43812461a9207f40c, type: 3}
       propertyPath: m_fontStyle
@@ -20266,23 +20274,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6843765794655175445, guid: 29dd3832f242c8d43812461a9207f40c, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 156.1664
+      value: 168.185
       objectReference: {fileID: 0}
     - target: {fileID: 6843765794655175445, guid: 29dd3832f242c8d43812461a9207f40c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 28.806
       objectReference: {fileID: 0}
     - target: {fileID: 6843765794655175445, guid: 29dd3832f242c8d43812461a9207f40c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.605463
+      value: 3.9757457
       objectReference: {fileID: 0}
     - target: {fileID: 6843765794655175445, guid: 29dd3832f242c8d43812461a9207f40c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.605463
+      value: 3.9757457
       objectReference: {fileID: 0}
     - target: {fileID: 6843765794655175445, guid: 29dd3832f242c8d43812461a9207f40c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4.605463
+      value: 3.9757457
       objectReference: {fileID: 0}
     - target: {fileID: 6843765794655175445, guid: 29dd3832f242c8d43812461a9207f40c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20314,11 +20322,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6843765794655175445, guid: 29dd3832f242c8d43812461a9207f40c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 8
+      value: -11
       objectReference: {fileID: 0}
     - target: {fileID: 6843765794655175445, guid: 29dd3832f242c8d43812461a9207f40c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 110
+      value: 118
       objectReference: {fileID: 0}
     - target: {fileID: 6843765794655175445, guid: 29dd3832f242c8d43812461a9207f40c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
