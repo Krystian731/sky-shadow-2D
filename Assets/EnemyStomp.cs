@@ -19,9 +19,13 @@ public class EnemyStomp : MonoBehaviour
         {
             soundManager.PlaySFX(soundManager.deadEnemy);
             enemyAnimator.SetTrigger("Die");
-           Destroy(collision.gameObject);
+            Destroy(collision.gameObject);
 
         }
         
     }
+     
+    
+        
+    
 }

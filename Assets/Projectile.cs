@@ -6,7 +6,7 @@ public class Projecttile : MonoBehaviour
 {
     public Rigidbody2D projectileRb;
     public float speed;
-
+    public Animator animator;
     public float projectileLife;
     public float projectileCount;
 
@@ -19,6 +19,7 @@ public class Projecttile : MonoBehaviour
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviourScript>();
         facingRight = playerMovement.sprite.localScale.x > 0;
         soundManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<soundManager>();
+       
         
     }
 
@@ -47,6 +48,7 @@ public class Projecttile : MonoBehaviour
         if(collision.gameObject.tag == "Weak Point")
         {
             soundManager.PlaySFX(soundManager.deadEnemy);
+            
             Destroy(collision.gameObject);
             
 
@@ -54,4 +56,5 @@ public class Projecttile : MonoBehaviour
         Destroy(gameObject);
 
     }
+ 
 }
