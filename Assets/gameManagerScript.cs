@@ -24,13 +24,13 @@ public class gameManagerScript : MonoBehaviour
     {
         gameOverUI.SetActive(true);
     }
-    public void NewGame() 
+    public void Restart() 
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("SampleScene");
     }
     public void MainMenu() 
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Main menu");
     }
     public void closeGame() 
     {
