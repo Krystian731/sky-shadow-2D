@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "sky-shadow-2D.sln"
+    "dotnet.defaultSolution": "SkyShadow2D FINAL.sln"
 }
