@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimOpen : MonoBehaviour
 {
     Animator animator;
+    public gameManagerScript gameManagerScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,8 @@ public class AnimOpen : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player")) 
         {
-            animator.SetBool("IsOpened", false);
+            animator.SetTrigger("open");
+
         }
     }
     // Update is called once per frame
